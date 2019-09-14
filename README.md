@@ -20,8 +20,10 @@ You can download the files [here](https://s3.amazonaws.com/video.udacity-data.co
 This program was written in Python (version 3.6.8) and relies on the following libraries:
 
 pandas==0.23.4
+
 numpy==1.15.4
 
 ---
 14 / sep /2019 
+
 amr.ahmad.es@gmail.com
