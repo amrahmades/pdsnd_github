@@ -167,14 +167,16 @@ def trip_duration_stats(df):
         print('Years: {}, Days: {}, Hours: {}, Mins: {}, Secs: {}'.format(y,d,h,m,s))
 
     #display total travel time
-    total_travel_time = df['Trip Duration'].sum()
-    print('Total travel time:\n')
-    secs_to_readable_time(total_travel_time)
+    try:
+	    total_travel_time = df['Trip Duration'].sum()
+	    print('Total travel time:\n')
+	    secs_to_readable_time(total_travel_time)
 
-    #display mean travel time
-    mean_travel_time = df['Trip Duration'].mean()
-    print('\nMean travel time: {} seconds'.format(mean_travel_time))
-
+	    #display mean travel time
+	    mean_travel_time = df['Trip Duration'].mean()
+	    print('\nMean travel time: {} seconds'.format(mean_travel_time))
+	except Exception e:
+		print("Exception happed " + e)
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
