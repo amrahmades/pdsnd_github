@@ -1,6 +1,17 @@
 import time
 import pandas as pd
 import numpy as np
+### Description
+# This is a CLI program developed to
+
+# allow the user to explore an US
+# bikeshare system database and
+# retrieve statistics information from
+# the database. The user is able filter
+# the information by city, month and
+# weekday, in order to visualize
+# statistics information related to a
+# specific subset of data.
 
 CITY_DATA = { 'chicago': 'chicago.csv',
               'new york': 'new_york_city.csv',
@@ -19,7 +30,6 @@ def get_filters():
 
     invalid_inputs = "Invalid input. Please try again ." 
     
-    print('Hello! Let\'s explore some US bikeshare data!')
     # TO DO: get user raw_input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     while True:
         city = input("\nenter the name of the city to analyze, city names:\nchicago,\nnew york,\nwashington. \n").lower()
@@ -97,7 +107,6 @@ def time_stats(df):
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
 
-
     # Convert the Start Time column to datetime
     df['Start Time'] = pd.to_datetime(arg = df['Start Time'], format = '%Y-%m-%d %H:%M:%S')
 
@@ -106,15 +115,15 @@ def time_stats(df):
     weekday_name = df['Start Time'].dt.weekday_name
     hour = df['Start Time'].dt.hour
     
-    # TO DO: display the most common month
+    #display the most common month
     most_common_month = month.mode()[0]
     print('Most common month: ', most_common_month)
 
-    # TO DO: display the most common day of week
+    #display the most common day of week
     most_common_day_of_week = weekday_name.mode()[0]
     print('Most common day of week: ', most_common_day_of_week)
 
-    # TO DO: display the most common start hour
+    #display the most common start hour
     common_start_hour = hour.mode()[0]
     print('Most frequent start hour: ', common_start_hour)
 
@@ -128,13 +137,13 @@ def station_stats(df):
     print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
 
-    # TO DO: display most commonly used start station
+    #display most commonly used start station
     print('Most commonly used start station:', df['Start Station'].value_counts().idxmax())
 
-    # TO DO: display most commonly used end station
+    #display most commonly used end station
     print('Most commonly used end station:', df['End Station'].value_counts().idxmax())
 
-    # TO DO: display most frequent combination of start station and end station trip
+    #display most frequent combination of start station and end station trip
     combine_stations = df['Start Station'] + "*" + df['End Station']
     common_station = combine_stations.value_counts().idxmax()
     print('Most frequent used combinations are:\n{} \nto\n{}'.format(common_station.split('*')[0], common_station.split('*')[1]))
@@ -157,12 +166,12 @@ def trip_duration_stats(df):
         y, d = divmod(d,365)
         print('Years: {}, Days: {}, Hours: {}, Mins: {}, Secs: {}'.format(y,d,h,m,s))
 
-    # TO DO: display total travel time
+    #display total travel time
     total_travel_time = df['Trip Duration'].sum()
     print('Total travel time:\n')
     secs_to_readable_time(total_travel_time)
 
-    # TO DO: display mean travel time
+    #display mean travel time
     mean_travel_time = df['Trip Duration'].mean()
     print('\nMean travel time: {} seconds'.format(mean_travel_time))
 
@@ -177,7 +186,7 @@ def user_stats(df):
     print('\nCalculating User Stats...\n')
     start_time = time.time()
 
-    # TO DO: Display counts of user types
+    #Display counts of user types
     user_types = df['User Type'].value_counts()
     print(user_types)
 
@@ -186,7 +195,7 @@ def user_stats(df):
         gender_count = df['Gender'].value_counts()
         print(gender_count)
 
-    # TO DO: Display earliest, most recent, and most common year of birth
+    #Display earliest, most recent, and most common year of birth
     if 'Birth Year' in df.columns:
         earliest_birth_year = df['Birth Year'].min()
         most_recent_birth_year = df['Birth Year'].max()
@@ -224,7 +233,6 @@ def main():
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
             break
-
 
 if __name__ == "__main__":
 	main()
