@@ -13,7 +13,7 @@ The required files for running this program are:
 * new_york_city.csv
 * chicago.csv
 
-You can download the files [here](https://drive.google.com/open?id=1sfcOviwrgdNjnhghi6N4IOobMzDNGz4w).
+You can download the files [here](https://s3.amazonaws.com/video.udacity-data.com/topher/2018/March/5aab379c_bikeshare-2/bikeshare-2.zip).
 
 #### Requirements
 
